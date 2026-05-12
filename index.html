@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>올리브영 글로벌 2026 H2 마케팅 전략</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* === PASSWORD GATE === */
+#pw-gate {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #080B14;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-family: 'Noto Sans KR', sans-serif;
+  transition: opacity 0.6s ease;
+}
+#pw-gate.fade-out { opacity: 0; pointer-events: none; }
+.pw-mark {
+  font-size: 12px; font-weight: 500; letter-spacing: 0.25em;
+  color: #C8A84B; text-transform: uppercase; margin-bottom: 48px;
+}
+.pw-box {
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  width: 100%; max-width: 320px;
+}
+.pw-label {
+  font-size: 13px; font-weight: 500; color: #8B93A8;
+  letter-spacing: 0.05em; align-self: flex-start;
+}
+.pw-input {
+  width: 100%; padding: 14px 18px;
+  background: #0E1221; border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px; color: #EEF0F5;
+  font-family: 'Noto Sans KR', sans-serif; font-size: 15px; font-weight: 400;
+  outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.1em;
+}
+.pw-input:focus {
+  border-color: #C8A84B;
+  box-shadow: 0 0 0 3px rgba(200,168,75,0.12);
+}
+.pw-input.error { border-color: #E85555; box-shadow: 0 0 0 3px rgba(232,85,85,0.12); animation: shake 0.35s ease; }
+.pw-btn {
+  width: 100%; padding: 14px;
+  background: #C8A84B; border: none; border-radius: 8px;
+  color: #080B14; font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
+  cursor: pointer; transition: opacity 0.2s, transform 0.15s;
+}
+.pw-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.pw-btn:active { transform: translateY(0); }
+.pw-error {
+  font-size: 12px; color: #E85555; font-weight: 500;
+  opacity: 0; transition: opacity 0.2s; height: 16px;
+}
+.pw-error.show { opacity: 1; }
+.pw-divider {
+  width: 40px; height: 1px;
+  background: rgba(200,168,75,0.35); margin: 8px 0 24px;
+}
+.pw-hint {
+  font-size: 11px; color: #4A5168; font-weight: 400;
+  letter-spacing: 0.03em; margin-top: 8px; text-align: center;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  60% { transform: translateX(8px); }
+  80% { transform: translateX(-4px); }
+}
+
+/* === VIEWPORT BASE CSS (mandatory) === */
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+.slide {
+  width: 100vw; height: 100vh; height: 100dvh;
+  overflow: hidden; scroll-snap-align: start;
+  display: flex; flex-direction: column; position: relative;
+}
+.slide-content {
+  flex: 1; display: flex; flex-direction: column;
+  justify-content: center; max-height: 100%;
+  overflow: hidden; padding: var(--slide-padding);
+}
+:root {
+  --title-size: clamp(1.8rem, 5vw, 4.5rem);
+  --h2-size: clamp(1.2rem, 3vw, 2.2rem);
+  --h3-size: clamp(0.95rem, 2vw, 1.4rem);
+  --body-size: clamp(0.72rem, 1.2vw, 1rem);
+  --small-size: clamp(0.62rem, 0.9vw, 0.8rem);
+  --slide-padding: clamp(1.5rem, 5vw, 5rem);
+  --content-gap: clamp(0.6rem, 2vw, 2rem);
+  --element-gap: clamp(0.3rem, 0.8vw, 0.8rem);
+}
+@media (max-height: 700px) {
+  :root { --slide-padding: clamp(0.8rem, 3vw, 2rem); --content-gap: clamp(0.4rem, 1.2vw, 1rem); --title-size: clamp(1.3rem, 4vw, 2.5rem); --h2-size: clamp(1rem, 2.5vw, 1.6rem); }
+}
+@media (max-height: 600px) {
+  :root { --slide-padding: clamp(0.5rem, 2vw, 1.5rem); --title-size: clamp(1.1rem, 3.5vw, 2rem); --body-size: clamp(0.65rem, 1vw, 0.88rem); }
+  .nav-dots, .keyboard-hint, .decorative { display: none; }
+}
+@media (max-height: 500px) {
+  :root { --slide-padding: clamp(0.4rem, 1.5vw, 1rem); --title-size: clamp(1rem, 3vw, 1.5rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* === DESIGN SYSTEM === */
+:root {
+  --bg: #080B14;
+  --bg2: #0E1221;
+  --bg3: #141929;
+  --border: rgba(255,255,255,0.07);
+  --border-bright: rgba(255,255,255,0.15);
+  --text: #EEF0F5;
+  --text-dim: #8B93A8;
+  --text-muted: #4A5168;
+  --gold: #C8A84B;
+  --gold-dim: rgba(200, 168, 75, 0.15);
+
+  /* Country colors */
+  --jp: #E85555;
+  --jp-dim: rgba(232, 85, 85, 0.12);
+  --uk: #4A7BE8;
+  --uk-dim: rgba(74, 123, 232, 0.12);
+  --au: #E8A43A;
+  --au-dim: rgba(232, 164, 58, 0.12);
+  --tw: #38C47A;
+  --tw-dim: rgba(56, 196, 122, 0.12);
+  --hk: #9B6BE8;
+  --hk-dim: rgba(155, 107, 232, 0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  /* Noto Sans KR only — all weights via font-weight */
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Grid background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* === ANIMATIONS === */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+.reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+.reveal-scale { opacity: 0; transform: scale(0.94); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+.slide.visible .reveal, .slide.visible .reveal-left, .slide.visible .reveal-scale { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.05s; }
+.d2 { transition-delay: 0.15s; }
+.d3 { transition-delay: 0.25s; }
+.d4 { transition-delay: 0.35s; }
+.d5 { transition-delay: 0.45s; }
+.d6 { transition-delay: 0.55s; }
+.d7 { transition-delay: 0.65s; }
+
+/* === COUNTRY SIDEBAR === */
+.sidebar {
+  position: fixed; left: 0; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 6px;
+  z-index: 100; padding: 12px 0;
+}
+.sidebar-btn {
+  width: 4px; height: 36px; background: rgba(255,255,255,0.12);
+  border: none; cursor: pointer; border-radius: 0 3px 3px 0;
+  transition: all 0.3s ease; position: relative; overflow: visible;
+}
+.sidebar-btn:hover, .sidebar-btn.active { width: 6px; }
+.sidebar-btn[data-country="jp"].active { background: var(--jp); box-shadow: 2px 0 12px var(--jp); }
+.sidebar-btn[data-country="uk"].active { background: var(--uk); box-shadow: 2px 0 12px var(--uk); }
+.sidebar-btn[data-country="au"].active { background: var(--au); box-shadow: 2px 0 12px var(--au); }
+.sidebar-btn[data-country="tw"].active { background: var(--tw); box-shadow: 2px 0 12px var(--tw); }
+.sidebar-btn[data-country="hk"].active { background: var(--hk); box-shadow: 2px 0 12px var(--hk); }
+.sidebar-label {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  font-size: 11px; font-family: 'Noto Sans KR', sans-serif; color: var(--text);
+  white-space: nowrap; background: var(--bg3); padding: 3px 8px;
+  border-radius: 4px; border: 1px solid var(--border-bright);
+  opacity: 0; pointer-events: none; transition: opacity 0.2s;
+}
+.sidebar-btn:hover .sidebar-label { opacity: 1; }
+
+/* === DOT NAV === */
+.nav-dots {
+  position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 100;
+}
+.dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.2); border: none; cursor: pointer;
+  transition: all 0.3s; padding: 0;
+}
+.dot.active { background: var(--gold); transform: scale(1.4); }
+
+/* === SLIDE COUNTER === */
+.slide-counter {
+  position: fixed; bottom: 28px; right: 32px;
+  font-family: 'Noto Sans KR', sans-serif; font-size: 11px;
+  color: var(--text-muted); z-index: 100;
+}
+
+/* === PROGRESS BAR === */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold), rgba(200,168,75,0.3));
+  z-index: 200; transition: width 0.4s ease;
+}
+
+/* === LOGO MARK === */
+.oy-mark {
+  position: fixed; top: 20px; left: 28px; z-index: 100;
+  font-family: 'Noto Sans KR', sans-serif; font-size: 14px;
+  letter-spacing: 0.15em; color: var(--gold); opacity: 0.7;
+  font-weight: 600;
+}
+
+/* === COUNTRY TAG === */
+.country-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Noto Sans KR', sans-serif; font-size: var(--small-size);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 20px; border: 1px solid currentColor;
+  margin-bottom: clamp(0.5rem, 1.5vh, 1.2rem);
+}
+
+.section-label {
+  font-family: 'Noto Sans KR', sans-serif; font-size: var(--small-size);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: clamp(0.4rem, 1vh, 0.8rem);
+}
+
+/* === TYPOGRAPHY === */
+.slide-title {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: var(--title-size); font-weight: 700;
+  line-height: 1.1; letter-spacing: -0.02em;
+}
+.slide-h2 {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: var(--h2-size); font-weight: 600;
+  line-height: 1.2;
+}
+.slide-h3 {
+  font-size: var(--h3-size); font-weight: 700;
+  line-height: 1.3;
+}
+.body-text { font-size: var(--body-size); color: var(--text-dim); line-height: 1.65; }
+.small-text { font-size: var(--small-size); color: var(--text-muted); }
+
+/* === BULLET LIST === */
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: var(--element-gap); }
+.bullet-list li {
+  font-size: var(--body-size); color: var(--text-dim);
+  padding-left: clamp(1rem, 2vw, 1.5rem); position: relative; line-height: 1.55;
+}
+.bullet-list li::before {
+  content: ''; position: absolute; left: 0; top: 0.6em;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent, var(--gold));
+}
+.bullet-list li strong { color: var(--text); font-weight: 700; }
+
+/* === CARDS === */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: clamp(0.6rem, 1.5vw, 1rem);
+  max-height: min(72vh, 600px); overflow: hidden;
+}
+.card {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 12px; padding: clamp(0.8rem, 1.5vw, 1.4rem);
+  position: relative; overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.card:hover { border-color: var(--border-bright); transform: translateY(-2px); }
+.card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--accent, var(--gold));
+}
+.card-icon { font-size: clamp(1.4rem, 2.5vw, 2rem); margin-bottom: 8px; }
+.card-title { font-size: var(--h3-size); font-weight: 700; margin-bottom: 6px; line-height: 1.25; }
+.card-body { font-size: var(--small-size); color: var(--text-dim); line-height: 1.55; }
+
+/* === TWO-COLUMN LAYOUT === */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: start;
+}
+.three-col {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: clamp(0.8rem, 1.5vw, 1.2rem);
+}
+@media (max-width: 768px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+
+/* === FUNNEL / FLOW === */
+.funnel-row {
+  display: flex; gap: clamp(0.5rem, 1.2vw, 1rem); align-items: stretch;
+}
+.funnel-step {
+  flex: 1; background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 10px; padding: clamp(0.7rem, 1.5vw, 1.2rem);
+  position: relative; text-align: center;
+}
+.funnel-step::after {
+  content: '→'; position: absolute; right: calc(-1 * clamp(0.5rem, 1.2vw, 1rem) / 2 - 10px);
+  top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 16px;
+}
+.funnel-step:last-child::after { display: none; }
+.funnel-label { font-size: var(--small-size); color: var(--text-muted); margin-bottom: 4px; font-family: 'Noto Sans KR', sans-serif; letter-spacing: 0.1em; }
+.funnel-title { font-size: var(--h3-size); font-weight: 700; }
+.funnel-sub { font-size: var(--small-size); color: var(--text-dim); margin-top: 6px; line-height: 1.45; }
+
+/* === HIGHLIGHT BADGE === */
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 20px;
+  font-size: var(--small-size); font-weight: 700; font-family: 'Noto Sans KR', sans-serif;
+  letter-spacing: 0.08em;
+}
+
+/* === TABLE STYLE === */
+.mini-table { width: 100%; border-collapse: collapse; font-size: var(--small-size); }
+.mini-table th {
+  background: rgba(255,255,255,0.04); color: var(--text-dim);
+  font-weight: 600; padding: 7px 10px; text-align: left;
+  border-bottom: 1px solid var(--border-bright); white-space: nowrap;
+}
+.mini-table td { padding: 6px 10px; border-bottom: 1px solid var(--border); color: var(--text-dim); }
+.mini-table tr:last-child td { border-bottom: none; }
+.mini-table td:first-child { color: var(--text); font-weight: 600; white-space: nowrap; }
+
+/* === DIVIDER === */
+.divider { height: 1px; background: var(--border); margin: clamp(0.6rem, 1.5vh, 1.2rem) 0; }
+
+/* === MEDIA PILLS === */
+.media-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.media-pill {
+  font-size: var(--small-size); padding: 4px 12px; border-radius: 20px;
+  background: rgba(255,255,255,0.06); border: 1px solid var(--border-bright);
+  color: var(--text-dim); font-family: 'Noto Sans KR', sans-serif;
+}
+.media-pill.highlight { border-color: currentColor; }
+
+/* === KPI ROW === */
+.kpi-row { display: flex; gap: clamp(0.6rem, 1.5vw, 1rem); flex-wrap: wrap; }
+.kpi-box {
+  flex: 1; min-width: 100px; background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 14px; text-align: center;
+}
+.kpi-value { font-family: 'Noto Sans KR', sans-serif; font-size: clamp(1.2rem, 2.5vw, 2rem); font-weight: 700; }
+.kpi-label { font-size: var(--small-size); color: var(--text-muted); margin-top: 2px; }
+
+/* === GRADIENT ORBS (decorative) === */
+.orb {
+  position: absolute; border-radius: 50%; filter: blur(80px);
+  pointer-events: none; z-index: 0;
+}
+.slide-content > * { position: relative; z-index: 1; }
+
+/* === SLIDE 1: COVER === */
+#s1 { background: var(--bg); }
+#s1 .orb-1 { width: 500px; height: 500px; top: -150px; right: -100px; background: rgba(200,168,75,0.08); }
+#s1 .orb-2 { width: 400px; height: 400px; bottom: -150px; left: -80px; background: rgba(74,123,232,0.06); }
+.cover-eyebrow {
+  font-family: 'Noto Sans KR', sans-serif; font-size: var(--small-size); font-weight: 500;
+  letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase;
+  margin-bottom: clamp(0.6rem, 1.5vh, 1.2rem);
+}
+.cover-title { font-family: 'Noto Sans KR', sans-serif; font-size: var(--title-size); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; }
+.cover-subtitle { font-size: clamp(1rem, 2vw, 1.6rem); color: var(--text-dim); font-family: 'Noto Sans KR', sans-serif; font-weight: 300; margin-top: 8px; }
+.cover-meta {
+  margin-top: clamp(1.5rem, 3vh, 2.5rem); display: flex; gap: 24px; flex-wrap: wrap;
+}
+.cover-meta-item { font-size: var(--small-size); color: var(--text-muted); font-family: 'Noto Sans KR', sans-serif; font-weight: 500; }
+.cover-meta-item span { color: var(--text-dim); }
+.gold-line { width: 60px; height: 2px; background: var(--gold); margin: clamp(1rem, 2vh, 1.8rem) 0; }
+.country-flags { display: flex; gap: 10px; font-size: clamp(1.2rem, 2.5vw, 1.8rem); }
+
+/* === SLIDE-SPECIFIC === */
+.slide-header { margin-bottom: clamp(1rem, 2.5vh, 2rem); }
+
+/* Set country accent on parent */
+.jp-slide { --accent: var(--jp); --accent-dim: var(--jp-dim); }
+.uk-slide { --accent: var(--uk); --accent-dim: var(--uk-dim); }
+.au-slide { --accent: var(--au); --accent-dim: var(--au-dim); }
+.tw-slide { --accent: var(--tw); --accent-dim: var(--tw-dim); }
+.hk-slide { --accent: var(--hk); --accent-dim: var(--hk-dim); }
+
+.accent-line { width: 40px; height: 3px; background: var(--accent, var(--gold)); border-radius: 2px; margin-bottom: clamp(0.6rem, 1.5vh, 1rem); }
+
+/* Background tint for country slides */
+.jp-slide { background: radial-gradient(ellipse at 90% 10%, rgba(232,85,85,0.06) 0%, transparent 55%), var(--bg); }
+.uk-slide { background: radial-gradient(ellipse at 10% 90%, rgba(74,123,232,0.06) 0%, transparent 55%), var(--bg); }
+.au-slide { background: radial-gradient(ellipse at 85% 85%, rgba(232,164,58,0.06) 0%, transparent 55%), var(--bg); }
+.tw-slide { background: radial-gradient(ellipse at 15% 15%, rgba(56,196,122,0.06) 0%, transparent 55%), var(--bg); }
+.hk-slide { background: radial-gradient(ellipse at 80% 20%, rgba(155,107,232,0.06) 0%, transparent 55%), var(--bg); }
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="pw-gate">
+  <p class="pw-mark">Olive Young Global</p>
+  <div class="pw-divider"></div>
+  <div class="pw-box">
+    <p class="pw-label">액세스 코드</p>
+    <input class="pw-input" id="pw-input" type="password" placeholder="비밀번호를 입력하세요" autocomplete="off" />
+    <p class="pw-error" id="pw-error">비밀번호가 올바르지 않습니다</p>
+    <button class="pw-btn" id="pw-btn">입장하기</button>
+    <p class="pw-hint">권한이 있는 사용자만 접근 가능합니다</p>
+  </div>
+</div>
+
+<!-- Progress bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Logo mark -->
+<div class="oy-mark">OLIVE YOUNG</div>
+
+<!-- Country sidebar -->
+<nav class="sidebar" id="sidebar">
+  <button class="sidebar-btn" data-country="jp" data-slide="2" onclick="goToSlide(2)"><span class="sidebar-label">🇯🇵 일본</span></button>
+  <button class="sidebar-btn" data-country="uk" data-slide="5" onclick="goToSlide(5)"><span class="sidebar-label">🇬🇧 영국</span></button>
+  <button class="sidebar-btn" data-country="au" data-slide="8" onclick="goToSlide(8)"><span class="sidebar-label">🇦🇺🇨🇦 호주/캐나다</span></button>
+  <button class="sidebar-btn" data-country="tw" data-slide="11" onclick="goToSlide(11)"><span class="sidebar-label">🇹🇼 대만</span></button>
+  <button class="sidebar-btn" data-country="hk" data-slide="14" onclick="goToSlide(14)"><span class="sidebar-label">🇭🇰 홍콩</span></button>
+</nav>
+
+<!-- Dot nav -->
+<nav class="nav-dots" id="navDots"></nav>
+
+<!-- Slide counter -->
+<div class="slide-counter" id="slideCounter">01 / 18</div>
+
+<!-- ===================== SLIDES ===================== -->
+
+<!-- SLIDE 1: COVER -->
+<section class="slide grid-bg" id="s1" data-index="0" data-country="cover">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="slide-content" style="justify-content: center; padding-left: clamp(2rem, 7vw, 7rem);">
+    <p class="cover-eyebrow reveal d1">💎 Global Marketing Strategy</p>
+    <h1 class="cover-title reveal d2">올리브영 글로벌<br><span style="color: var(--gold)">2026 하반기</span><br>마케팅 전략 제안</h1>
+    <div class="gold-line reveal d3"></div>
+    <p class="cover-subtitle reveal d4">5개 권역 국가별 현황 진단 &amp; 전략 액션플랜</p>
+    <div class="cover-meta reveal d5">
+      <div class="cover-meta-item">대상 국가<br><span>일본 · 영국 · 호주 · 캐나다 · 대만 · 홍콩</span></div>
+      <div class="cover-meta-item">기간<br><span>2026 H2 (7–12월)</span></div>
+      <div class="cover-meta-item">담당<br><span>글로벌4팀 (마케팅8팀)</span></div>
+    </div>
+    <div class="country-flags reveal d6" style="margin-top: clamp(1rem, 2.5vh, 2rem);">
+      🇯🇵&nbsp;🇬🇧&nbsp;🇦🇺&nbsp;🇨🇦&nbsp;🇹🇼&nbsp;🇭🇰
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2: OVERVIEW -->
+<section class="slide grid-bg" id="s2" data-index="1" data-country="overview">
+  <div class="slide-content">
+    <div class="slide-header">
+      <p class="section-label reveal d1">Overview</p>
+      <h2 class="slide-h2 reveal d2">국가별 전략 방향 한눈에</h2>
+    </div>
+    <div class="card-grid reveal d3" style="grid-template-columns: repeat(3, 1fr); max-height: min(68vh, 520px);">
+      <div class="card" style="--accent: var(--jp);">
+        <div class="card-icon">🇯🇵</div>
+        <div class="card-title">일본</div>
+        <div class="card-body">오프라인 명소 → 온라인 직구 전환<br><br>HELP·HUB·HERO 3단계 퍼널 운영</div>
+        <div class="divider"></div>
+        <div class="small-text" style="color: var(--jp);">글로벌몰 인지도 &amp; 구매 설득</div>
+      </div>
+      <div class="card" style="--accent: var(--uk);">
+        <div class="card-icon">🇬🇧</div>
+        <div class="card-title">영국</div>
+        <div class="card-body">K뷰티 Emerging Stage<br><br>"Properly APP-PY!" 앱 설치 캠페인</div>
+        <div class="divider"></div>
+        <div class="small-text" style="color: var(--uk);">PMAX 5그룹 구조 + Meta AAA</div>
+      </div>
+      <div class="card" style="--accent: var(--au);">
+        <div class="card-icon">🇦🇺🇨🇦</div>
+        <div class="card-title">호주/캐나다</div>
+        <div class="card-body">오프라인 K뷰티 수요 흡수<br><br>검색 캠페인으로 재구매 전환</div>
+        <div class="divider"></div>
+        <div class="small-text" style="color: var(--au);">Offline Discovery → OY Purchase</div>
+      </div>
+      <div class="card" style="--accent: var(--tw);">
+        <div class="card-icon">🇹🇼</div>
+        <div class="card-title">대만</div>
+        <div class="card-body">프로모션 의존 탈피<br><br>K-Summer Rescue 7-8월 특화 프로모</div>
+        <div class="divider"></div>
+        <div class="small-text" style="color: var(--tw);">고가치 신규 고객 확보</div>
+      </div>
+      <div class="card" style="--accent: var(--hk);">
+        <div class="card-icon">🇭🇰</div>
+        <div class="card-title">홍콩</div>
+        <div class="card-body">성숙 시장, 프리미엄 니즈 부상<br><br>4대 메시지 기반 콘텐츠 전략</div>
+        <div class="divider"></div>
+        <div class="small-text" style="color: var(--hk);">프리미엄 K뷰티 큐레이터 포지셔닝</div>
+      </div>
+      <div class="card" style="background: var(--gold-dim); border-color: rgba(200,168,75,0.3);">
+        <div class="card-icon">💎</div>
+        <div class="card-title" style="color: var(--gold);">공통 핵심 과제</div>
+        <div class="card-body">신규 고객 확보 비중 확대<br>프로모션 외 상시기간 매출 안정화<br>앱 중심 고관여 유저 육성</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: JAPAN — 현황 -->
+<section class="slide jp-slide grid-bg" id="s3" data-index="2" data-country="jp">
+  <div class="slide-content">
+    <div class="slide-header">
+      <div class="country-tag reveal d1" style="color: var(--jp); border-color: var(--jp);">🇯🇵 Japan — 현황 진단</div>
+      <div class="accent-line reveal d2"></div>
+      <h2 class="slide-h2 reveal d3">"오프라인 명소"에 갇힌 올리브영</h2>
+    </div>
+    <div class="two-col" style="gap: clamp(1.5rem, 3vw, 2.5rem);">
+      <div>
+        <p class="section-label reveal d4">문제 인식</p>
+        <ul class="bullet-list reveal d4" style="--accent: var(--jp);">
+          <li>구글 트렌드(JP) 상위 검색어 TOP20 중 <strong>여행·오프라인 키워드가 55%</strong> 차지 (한국, 명동, 성수, 면세)</li>
+          <li>K뷰티 수요는 높으나 올리브영의 역할이 <strong>'현지 구매 채널'로 미확장</strong></li>
+          <li>경쟁사: 큐텐·아마존·드럭스토어 등 대형 플랫폼 의존도 높음</li>
+          <li>구매 전 <strong>"실제 한국 인기템인지"</strong> 검증 니즈가 강함</li>
+        </ul>
+      </div>
+      <div>
+        <p class="section-label reveal d5">올리브영 포지션</p>
+        <div class="card reveal d5" style="--accent: var(--jp); background: var(--jp-dim); border-color: rgba(232,85,85,0.2);">
+          <div class="card-title" style="color: var(--jp); font-size: var(--h3-size);">✅ 강점</div>
+          <div class="card-body" style="margin-top: 8px;">경쟁사 대비 <strong style="color: var(--text);">현지성(한국 트렌드·랭킹 큐레이션)</strong>에서 우위</div>
+        </div>
+        <div class="card reveal d6" style="margin-top: 10px; --accent: var(--text-muted); background: rgba(255,255,255,0.03);">
+          <div class="card-title" style="font-size: var(--h3-size);">⚠️ 열세</div>
+          <div class="card-body" style="margin-top: 8px;">글로벌몰 인지도 · 가격 · 배송 측면에서<br>온라인 경쟁사 대비 열위</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: JAPAN — HELP/HUB/HERO -->
+<section class="slide jp-slide" id="s4" data-index="3" data-country="jp">
+  <div class="slide-content">
+    <div class="slide-header">
+      <div class="country-tag reveal d1" style="color: var(--jp); border-color: var(--jp);">🇯🇵 Japan — 전략 프레임워크</div>
+      <div class="accent-line reveal d2"></div>
+      <h2 class="slide-h2 reveal d3">HELP · HUB · HERO 3단계 퍼널</h2>
+    </div>
+    <div class="funnel-row reveal d4">
+      <div class="funnel-step" style="border-color: rgba(232,85,85,0.3); background: var(--jp-dim);">
+        <div class="funnel-label" style="color: var(--jp);">STEP 01</div>
+        <div class="funnel-title">HELP</div>
+        <div class="badge" style="background: rgba(232,85,85,0.15); color: var(--jp); margin: 6px 0;">인지도 제고</div>
+        <div class="funnel-sub">KPI: CPU · ClicktoUV<br>올리브영은 일본에서도<br>살 수 있다</div>
+        <div class="divider" style="margin: 8px 0;"></div>
+        <div class="media-pills" style="justify-content: center;">
+          <span class="media-pill">Meta 트래픽</span>
+          <span class="media-pill">구글 DemandGen</span>
+          <span class="media-pill">DOOH</span>
+        </div>
+      </div>
+      <div class="funnel-step" style="border-color: rgba(232,85,85,0.5); background: rgba(232,85,85,0.08);">
+        <div class="funnel-label" style="color: var(--jp);">STEP 02</div>
+        <div class="funnel-title">HUB</div>
+        <div class="badge" style="background: rgba(232,85,85,0.2); color: var(--jp); margin: 6px 0;">구매 설득</div>
+        <div class="funnel-sub">KPI: 첫구매 CPA/ROAS<br>왜 올리브영에서<br>사야 하는가</div>
+        <div class="divider" style="margin: 8px 0;"></div>
+        <div class="media-pills" style="justify-content: center;">
+          <span class="media-pill">Meta 첫구매</span>
+          <span class="media-pill">Google PMAX</span>
+          <span class="media-pill">Yahoo·Line</span>
+        </div>
+      </div>
+      <div class="funnel-step" style="border-color: rgba(232,85,85,0.7); background: rgba(232,85,85,0.12);">
+        <div class="funnel-label" style="color: var(--jp);">STEP 03</div>
+        <div class="funnel-title">HERO</div>
+        <div class="badge" style="background: rgba(232,85,85,0.25); color: var(--jp); margin: 6px 0;">로열티 강화</div>
+        <div class="funnel-sub">KPI: ROAS / Retention<br>검증된 K뷰티 트렌드를<br>가장 빠르게</div>
+        <div class="divider" style="margin: 8px 0;"></div>
+        <div class="media-pills" style="justify-content: center;">
+          <span class="media-pill">Meta 전환</span>
+          <span class="media-pill">Google PMAX</span>
+          <span class="media-pill">Google SA</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal d5" style="margin-top: clamp(0.8rem, 2vh, 1.5rem);">
+      <p class="body-text">💡 <strong style="color: var(--text);">핵심 메시지:</strong> "한국 여행 → 귀국 후에도 글로벌몰에서 재구매" · 한국 랭킹/리뷰/어워즈 기반 구매 확신 → 올리브영 어워즈·PICK 랜딩페이지 설계 병행</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: JAPAN — 내부 전환 설계 -->
+<section class="slide jp-slide grid-bg" id="s5" data-index="4" data-country="jp">
+  <div class="slide-content">
+    <div class="slide-header">
+      <div class="country-tag reveal d1" style="color: var(--jp); border-color: var(--jp);">🇯🇵 Japan — 내부 전환 구조</div>
+      <div class="accent-line reveal d2"></div>
+      <h2 class="slide-h2 reveal d3">유입 신규 유저를 구매까지 전환시키는 랜딩 설계</h2>
+    </div>
+    <div class="card-grid reveal d4" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="card" style="--accent: var(--jp);">
+        <div class="card-icon">🏆</div>
+        <div class="card-title" style="font-size: var(--body-size);">한국 랭킹 상위 페이지</div>
+        <div class="card-body">실제 많이 팔리는 제품 → 트렌드 신뢰 확보</div>
+      </div>
+      <div class="card" style="--accent: var(--jp);">
+        <div class="card-icon">⭐</div>
+        <div class="card-title" style="font-size: var(--body-size);">한국 소비자 리뷰 고평점</div>
+        <div class="card-body">사용감·효과·피부타입 사전 확인</div>
+      </div>
+      <div class="card" style="--accent: var(--jp);">
+        <div class="card-icon">🥇</div>
+        <div class="card-title" style="font-size: var(--body-size);">올리브영 어워즈 수상템</div>
+        <div class="card-body">객관적 검증감 → 신규 구매 리스크 감소</div>
+      </div>
+      <div class="card" style="--accent: var(--jp);">
+        <div class="card-icon">💚</div>
+        <div class="card-title" style="font-size: var(--body-size);">OLIVE YOUNG PICK</div>
+        <div class="card-body">전문 큐레이션 → 신규 유저 맞춤 구매 여정</div>
+      </div>
+    </div>
+    <div class="reveal d5" style="margin-top: clamp(0.8rem, 2vh, 1.5rem);">
+      <p class="section-label">전략 방향</p>
+      <p class="body-text">가격 경쟁보다 <strong style="color: var(--text);">"한국에서 검증된 K뷰티를 실패 없이 고르는 채널"</strong>이라는 구매 확신 형성이 핵심. 랭킹·리뷰·어워즈를 페이지화하여 상품 탐색부터 구매까지 연결성 강화.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: UK — 현황 -->
+<section class="slide uk-slide grid-bg" id="s6" data-index="5" data-country="uk">
+  <div class="slide-content">
+    <div class="slide-header">
+      <div class="country-tag reveal d1" style="color: var(--uk); border-color: var(--uk);">🇬🇧 UK — 현황 진단</div>
+      <div class="accent-line reveal d2"></div>
+      <h2 class="slide-h2 reveal d3">K뷰티 Emerging Stage — 아직 시장 초기</h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <p class="section-label reveal d4">시장 규모</p>
+        <ul class="bullet-list reveal d4" style="--accent: var(--uk);">
+          <li>K뷰티 수출액 영국은 <strong>10위권 밖</strong>, 미국·일본 대비 1/10 수준 (144만 달러)</li>
+          <li>영국 내 K뷰티 점유율 <strong>4–6%</strong>로 미미한 수준</li>
+          <li>K뷰티에 호감은 있으나 <strong>"영국에서 인기 있다"고 인식 낮음</strong></li>
+        </ul>
+        <div class="divider" style="margin: clamp(0.5rem, 1.5vh, 1rem) 0;"></div>
+        <p class="section-label reveal d5">경쟁 구도</p>
+        <ul class="bullet-list reveal d5" style="--accent: var(--uk);">
+          <li>K뷰티 채널 점유 순위: Boots &gt; YesStyle &gt; PureSeoul &gt; Stylevana &gt; <strong>Olive Young</strong></li>
+          <li>올리브영은 UK 내 K뷰티 채널 <strong>5위권 밖</strong></li>
+        </ul>
+      </div>
+      <div>
+        <p class="section-label reveal d6">기회 요인</p>
+        <div class="card reveal d6" style="--accent: var(--uk); background: var(--uk-dim); border-color: rgba(74,123,232,0.25);">
+          <div class="card-body">
+            📱 GA 데이터: <strong style="color: var(--text);">APP vs WEB</strong><br>
+            앱 유저가 웹 대비 리텐션·참여시간·조회수 모두 우수<br><br>
+            📊 iOS 유저 비중이 높고 활성도 우수<br><br>
+            🎯 <strong style="color: var(--text);">앱설치 캠페인으로 "찐 관심 고객" 확보</strong>가 핵심
+          </div>
+        </div>
+        <div class="card reveal d7" style="margin-top: 10px; --accent: var(--uk);">
+          <div class="card-body">
+            UK 25–44세 쇼핑객 <strong style="color: var(--text);">90%</strong>가<br>특별 할인 또는 무료 상품 보장 시 경품추첨 참여 의향
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: UK — Properly APP-PY -->
+<section class="slide uk-slide" id="s7" data-index="6" data-country="uk">
+  <div class="slide-content">
+    <div class="slide-header">
+      <div class="country-tag reveal d1" style="color: var(--uk); border-color: var(--uk);">🇬🇧 UK — Meta AAA 캠페인</div>
+      <div class="accent-line reveal d2"></div>
+      <h2 class="slide-h2 reveal d3">"Properly APP-PY!" 앱설치 상시 운영</h2>
+    </div>
+    <div class="card-grid reveal d4" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="card" style="--accent: var(--uk);">
+        <div class="card-icon">💡</div>
+        <div class="card-title">컨셉 슬로건</div>
+        <div class="card-body"><strong style="color: var(--uk);">Properly APP-PY!</strong><br><br>Properly = 매우·제대로·영국 정통성<br>→ 영국인을 위한 / 제대로 된 혜택의 중의적 메시지</div>
+      </div>
+      <div class="card" style="--accent: var(--uk);">
+        <div class="card-icon">🎁</div>
+        <div class="card-title">혜택 구조</div>
+        <div class="card-body">① 첫구매 + 앱전용 쿠폰 (진입장벽 완화)<br><br>② 100% 당첨 럭키드로우<br>포인트별 차등 + £환산 표기로 직관적 혜택 전달</div>
+      </div>
+      <div class="card" style="--accent: var(--uk);">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">추가 이벤트</div>
+        <div class="card-body">스탬프 미션 (회원가입→앱설치→알림설정)<br><br>친구 초대 할인 (조건부 양쪽 포인트)<br><br>리뷰 작성 리워드</div>
+      </div>
+    </div>
+    <div class="reveal d5" style="margin-top: clamp(0.8rem, 2vh, 1.5rem);">
+      <div class="kpi-row">
+        <div class="kpi-box" style="--accent: var(--uk);">
+          <div class="kpi-value" style="color: var(--uk);">2,000원대</div>
+          <div class="kpi-label">목표 CPI 절감 수준</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-value" style="color: var(--text);">iOS 우선</div>
+          <div class="kpi-label">AOS 대비 활성도·리텐션 우수</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-value" style="color: var(--uk);">UK Only</div>
+          <div class="kpi-label">로컬라이즈 카피 성과 우수</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-value" style="color: var(--text);">히든 랜딩</div>
+          <div class="kpi-label">Paid 광고 전용 · 긴박감 연출</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: UK — PMAX 구조 -->
+<section class="slide uk-slide grid-bg" id="s8" data-index="7" data-country="uk">
+  <div class="slide-content">
+    <div class="slide-header">
+      <div class="country-tag reveal d1" style="color: var(--uk); border-color: var(--uk);">🇬🇧 UK — Google PMAX 전략</div>
+      <div class="accent-line reveal d2"></div>
+      <h2 class="slide-h2 reveal d3">5개 애셋그룹 구조화로 최적화 도모</h2>
+    </div>
+    <div class="reveal d3" style="overflow-x: auto;">
+      <table class="mini-table">
+        <thead>
+          <tr>
+            <th style="color: var(--uk);">운영 목적</th>
+            <th>검색 테마 (키워드)</th>
+            <th>오디언스 시그널</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Promotion <span class="badge" style="background: rgba(74,123,232,0.15); color: var(--uk); margin-left: 4px;">단기 매출</span></td>
+            <td>프로모션별 상이</td>
+            <td>방문 후 이탈 유저, 올영세일 기간 구매 유저</td>
+          </tr>
+          <tr>
+            <td>Branding <span class="badge" style="background: rgba(74,123,232,0.15); color: var(--uk); margin-left: 4px;">브랜드 방어</span></td>
+            <td>oliveyoung, oliveyoung global, oliveyoung uk, discount code</td>
+            <td>구매 이력 유저, 블랙·골드 등급</td>
+          </tr>
+          <tr>
+            <td>Vendor <span class="badge" style="background: rgba(74,123,232,0.15); color: var(--uk); margin-left: 4px;">팬덤 흡수</span></td>
+            <td>COSRX Snail Mucin, Beauty of Joseon Sunscreen, Anua Heartleaf Toner UK</td>
+            <td>브랜드K 검색 유저, 해당 사이트 방문 유저</td>
+          </tr>
+          <tr>
+            <td>Competitor <span class="badge" style="background: rgba(74,123,232,0.15); color: var(--uk); margin-left: 4px;">스위칭</span></td>
+            <td>yesstyle, stylevana, lookfantastic promo, skincupid delivery uk</td>
+            <td>경쟁사K 검색 유저, 해당 사이트 방문 유저</td>
+          </tr>
+          <tr>
+            <td>General <span class="badge" style="background: rgba(74,123,232,0.15); color: var(--uk); margin-left: 4px;">입문 선점</span></td>
+            <td>kbeauty, best korean skincare, korean sunscreen no white cast</td>
+            <td>뷰티 관련 관심사·구매의도</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="reveal d4" style="margin-top: clamp(0.6rem, 1.5vh, 1rem);">
+      <p class="body-text">💡 단일 캠페인 통합 → 내부 카니발라이제이션 해소 · NCA value mode(신규 고객 입찰가 가중치) 적용 · 1P 데이터 주기적 refresh 필요</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: AU/CA — 현황 & 전략 -->
+<section class="slide au-slide grid-bg" id="s9" data-index="8" data-country="au">
+  <div class="slide-content">
+    <div class="slide-header">
+      <div class="country-tag reveal d1" style="color: var(--au); border-color: var(--au);">🇦🇺🇨🇦 AU/CA — 현황 &amp; 핵심 전략</div>
+      <div class="accent-line reveal d2"></div>
+      <h2 class="slide-h2 reveal d3">오프라인이 적이 아니다 — 수요를 OY로 흡수하라</h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <p class="section-label reveal d4">현황 진단</p>
+        <ul class="bullet-list reveal d4" style="--accent: var(--au);">
+          <li>호주 K뷰티 전년 동기 대비 <strong>+46.3%</strong>, 캐나다 연평균 <strong>+30.1% 성장</strong></li>
+          <li>그러나 OY 매출 증분 뚜렷하지 않음 → 오프라인 채널 중심 시장 구조</li>
+          <li>호주 뷰티 판매액 <strong>87%가 오프라인</strong>에서 발생</li>
+          <li>메타 카탈로그 위주 운영 → 기구매자 위주 노출로 <strong>첫구매 비중 정체</strong></li>
+        </ul>
+      </div>
+      <div>
+        <p class="section-label reveal d5">전략 방향</p>
+        <div class="funnel-row" style="flex-direction: column; gap: 8px;" >
+          <div class="card reveal d5" style="--accent: var(--au); text-align: center; padding: 10px;">
+            <div class="small-text" style="color: var(--au); font-family: 'Noto Sans KR', sans-serif; letter-spacing: 0.1em;">STEP 1</div>
+            <div class="slide-h3">Offline Discovery</div>
+            <div class="small-text">오프라인 매대·로드샵에서 K뷰티 경험</div>
+          </div>
+          <div style="text-align: center; color: var(--text-muted); font-size: 18px;">↓</div>
+          <div class="card reveal d6" style="--accent: var(--au); text-align: center; padding: 10px;">
+            <div class="small-text" style="color: var(--au); font-family: 'Noto Sans KR', sans-serif; letter-spacing: 0.1em;">STEP 2</div>
+            <div class="slide-h3">Online Learning</div>
+            <div class="small-text">TikTok·Reddit에서 효과·성분 검증</div>
+          </div>
+          <div style="text-align: center; color: var(--text-muted); font-size: 18px;">↓</div>
+          <div class="card reveal d7" style="--accent: var(--au); background: var(--au-dim); border-color: rgba(232,164,58,0.3); text-align: center; padding: 10px;">
+            <div class="small-text" style="color: var(--au); font-family: 'Noto Sans KR', sans-serif; letter-spacing: 0.1em;">STEP 3</div>
+            <div class="slide-h3">OY Purchase &amp; Stock-up</div>
+            <div class="small-text">올리브영에서 재구매·쟁여두기</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: AU/CA — 오프라인→온라인 전환 전술 -->
+<section class="slide au-slide" id="s10" data-index="9" data-country="au">
+  <div class="slide-content">
+    <div class="slide-header">
+      <div class="country-tag reveal d1" style="color: var(--au); border-color: var(--au);">🇦🇺🇨🇦 AU/CA — 유저 하이재킹 전술</div>
+      <div class="accent-line reveal d2"></div>
+      <h2 class="slide-h2 reveal d3">더 나은 구매처를 찾는 유저를 OY로</h2>
+    </div>
+    <div class="card-grid reveal d3" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="card" style="--accent: var(--au);">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Google 검색 캠페인</div>
+        <div class="card-body">
+          <span class="badge" style="background: var(--au-dim); color: var(--au); margin-bottom: 6px; display: inline-block;">Vendor 그룹</span><br>
+          beauty of joseon, anua, cosrx, tirtir<br><br>
+          <span class="badge" style="background: var(--au-dim); color: var(--au); display: inline-block;">General 그룹</span><br>
+          kbeauty routine, korean best sunscreen
+        </div>
+      </div>
+      <div class="card" style="--accent: var(--au);">
+        <div class="card-icon">📱</div>
+        <div class="card-title">TikTok 검색 캠페인</div>
+        <div class="card-body">
+          F18–34 데모 고정 + 검색 인텐트 기반 그룹핑<br><br>
+          <span class="badge" style="background: var(--au-dim); color: var(--au); display: inline-block;">소재</span> 카탈로그 캐러셀 + Spark Ads 병행<br><br>
+          오프라인 매대에서 본 제품을 TikTok에서 검증하는 유저 포착
+        </div>
+      </div>
+      <div class="card" style="--accent: var(--au);">
+        <div class="card-icon">🗣️</div>
+        <div class="card-title">Reddit 타겟팅</div>
+        <div class="card-body">
+          커뮤니티: r/AsianBeauty, r/KoreanBeauty<br><br>
+          🇦🇺 키워드: K-beauty Australia, Cosrx, Olive Young AU shipping<br><br>
+          🇨🇦 키워드: K-beauty Canada, Round Lab, Mediheal
+        </div>
+      </div>
+    </div>
+    <div class="reveal d4" style="margin-top: clamp(0.6rem, 1.5vh, 1rem);">
+      <p class="body-text">💡 <strong style="color: var(--text);">소재 핵심 카피:</strong> "Get your COSRX at OY: 100% Authentic. Faster, Cheaper, Easier." — 재구매를 OY에서 해야 하는 이유를 제품별로 직접 설득</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11: AU/CA — 시즈널리티 캘린더 -->
+<section class="slide au-slide grid-bg" id="s11" data-index="10" data-country="au">
+  <div class="slide-content">
+    <div class="slide-header">
+      <div class="country-tag reveal d1" style="color: var(--au); border-color: var(--au);">🇦🇺🇨🇦 AU/CA — 시즈널리티 캘린더</div>
+      <div class="accent-line reveal d2"></div>
+      <h2 class="slide-h2 reveal d3">2026 H2 국가별 프로모션 타임라인</h2>
+    </div>
+    <div class="two-col reveal d3">
+      <div>
+        <p class="section-label" style="color: var(--au);">🇦🇺 호주 (계절 역전)</p>
+        <table class="mini-table" style="margin-top: 8px;">
+          <thead><tr><th>월</th><th>주요 프로모션</th><th>주력 제품</th></tr></thead>
+          <tbody>
+            <tr><td>6월</td><td>EOFY (회계연도 말)</td><td>대용량 번들·고단가 미용기기</td></tr>
+            <tr><td>7월</td><td>Christmas in July</td><td>판테놀·세라마이드 크림</td></tr>
+            <tr><td>8월</td><td>Winter Skincare Reset</td><td>탈모 샴푸·고보습 바디로션</td></tr>
+            <tr><td>9월</td><td>Spring Refresh</td><td>필링젤·비타민C 잡티 세럼</td></tr>
+            <tr><td>10월</td><td>Halloween</td><td>고발색 립·글리터 아이섀도</td></tr>
+            <tr><td>11-12월</td><td>BFCM / Boxing Day</td><td>수분 선크림·쿨링 진정</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <p class="section-label" style="color: var(--au);">🇨🇦 캐나다</p>
+        <table class="mini-table" style="margin-top: 8px;">
+          <thead><tr><th>월</th><th>주요 프로모션</th><th>주력 제품</th></tr></thead>
+          <tbody>
+            <tr><td>6월</td><td>북중미 월드컵</td><td>쿠션 파운데이션·선스틱</td></tr>
+            <tr><td>7월</td><td>여름 휴가 세일</td><td>선케어</td></tr>
+            <tr><td>8월</td><td>Back to School</td><td>니들 패치·시카 세럼</td></tr>
+            <tr><td>9월</td><td>Fall Routine Reset</td><td>비타민C·히알루론산 앰플</td></tr>
+            <tr><td>10월</td><td>Thanksgiving·Halloween</td><td>홀리데이 큐레이션 세트</td></tr>
+            <tr><td>11월</td><td>BFCM</td><td>선물용 고가 라인</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 12: TAIWAN — 현황 -->
+<section class="slide tw-slide grid-bg" id="s12" data-index="11" data-country="tw">
+  <div class="slide-content">
+    <div class="slide-header">
+      <div class="country-tag reveal d1" style="color: var(--tw); border-color: var(--tw);">🇹🇼 Taiwan — 현황 진단</div>
+      <div class="accent-line reveal d2"></div>
+      <h2 class="slide-h2 reveal d3">Paid 매출 의존도 최고 — 프로모션 공백이 문제</h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <p class="section-label reveal d4">핵심 문제</p>
+        <ul class="bullet-list reveal d4" style="--accent: var(--tw);">
+          <li>타 국가 대비 <strong>Paid 매출 비중 의존도 최고</strong>, 특히 프로모션 기간에 집중</li>
+          <li>프로모션 없는 <strong>7–8월 기간 프로모션 공백</strong> 존재</li>
+          <li>3월 올영세일 등 대형 프로모션 기간 신규 고객 비중이 높음 → <strong>하반기 70–80% 목표</strong></li>
+          <li>프로모션 기간 유입 신규 고객이 장기 오가닉 유저로 전환 안됨</li>
+        </ul>
+      </div>
+      <div>
+        <p class="section-label reveal d5">전략 방향</p>
+        <div class="card reveal d5" style="--accent: var(--tw); background: var(--tw-dim); border-color: rgba(56,196,122,0.25);">
+          <div class="card-title" style="color: var(--tw);">프로모션 기간 PUSH</div>
+          <div class="card-body" style="margin-top: 8px;">신규 고객 확보에 집중 → <strong style="color: var(--text);">프로모션 공백 메우기 + 매출 드라이브</strong></div>
+        </div>
+        <div class="card reveal d6" style="margin-top: 10px; --accent: var(--tw);">
+          <div class="card-title">상시기간 활용</div>
+          <div class="card-body" style="margin-top: 8px;">고관여·고가치 신규 고객 선확보<br>→ 다음 프로모션 기간 '대규모 매출 확보'의 기반</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13: TAIWAN — K-Summer Rescue -->
+<section class="slide tw-slide" id="s13" data-index="12" data-country="tw">
+  <div class="slide-content">
+    <div class="slide-header">
+      <div class="country-tag reveal d1" style="color: var(--tw); border-color: var(--tw);">🇹🇼 Taiwan — 액션 아이템 1</div>
+      <div class="accent-line reveal d2"></div>
+      <h2 class="slide-h2 reveal d3">K-Summer Rescue — 일본 제품을 이기는 7–8월</h2>
+    </div>
+    <div class="reveal d4" style="margin-bottom: clamp(0.5rem, 1.5vh, 1rem);">
+      <p class="body-text"><strong style="color: var(--tw);">배경:</strong> 7–8월 대만 해외 여행객 50%가 일본으로. 일본 드럭스토어에서 제품 대량 구매 → <strong style="color: var(--text);">K뷰티의 기능적 우위로 역전 공략</strong></p>
+    </div>
+    <div class="card-grid reveal d5" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="card" style="--accent: var(--tw);">
+        <div class="card-icon">✈️</div>
+        <div class="card-title">세트 1 — 기내 수분 Rescue</div>
+        <div class="card-body">VS 일본 수분 크림<br><br>고농축 히알루론 수분 앰플 + 크림 + 기내 반입용 미스트<br><br><em style="color: var(--tw);">압도적 속보습 유지력</em></div>
+      </div>
+      <div class="card" style="--accent: var(--tw);">
+        <div class="card-icon">☀️</div>
+        <div class="card-title">세트 2 — 야외 자외선 Rescue</div>
+        <div class="card-body">VS 일본 선케어<br><br>초밀착 선세럼 + 쿨링 선스틱 + 톤업 베이스<br><br><em style="color: var(--tw);">무너지지 않는 밀착력 &amp; 지속력</em></div>
+      </div>
+      <div class="card" style="--accent: var(--tw);">
+        <div class="card-icon">🌙</div>
+        <div class="card-title">세트 3 — 애프터 바캉스 Rescue</div>
+        <div class="card-body">VS 일본 클렌징 오일<br><br>딥 클렌징 패드 + 모공 수축 팩 + 진정 재생 크림<br><br><em style="color: var(--tw);">모공 타이트닝 &amp; 저자극 딥클린</em></div>
+      </div>
+    </div>
+    <div class="reveal d6" style="margin-top: clamp(0.5rem, 1.5vh, 1rem);">
+      <p class="body-text">🎁 <strong style="color: var(--text);">스킴:</strong> 세트 결제 시 샘플 3종 증정 + 여행 파우치 패키징 제공 — 여행 중 사용 경험으로 재구매 유도</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 14: TAIWAN — 매체 & 고가치 신규 -->
+<section class="slide tw-slide grid-bg" id="s14" data-index="13" data-country="tw">
+  <div class="slide-content">
+    <div class="slide-header">
+      <div class="country-tag reveal d1" style="color: var(--tw); border-color: var(--tw);">🇹🇼 Taiwan — 매체 운영 &amp; 고가치 신규 확보</div>
+      <div class="accent-line reveal d2"></div>
+      <h2 class="slide-h2 reveal d3">신규 매체 Line 진입 + 고관여 유저 선점</h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <p class="section-label reveal d3">신규 매체: Line</p>
+        <ul class="bullet-list reveal d3" style="--accent: var(--tw);">
+          <li><strong>Line Voom</strong>: MAU 1,600만, 20–49세 60% 이상 → OY 핵심 타겟</li>
+          <li><strong>공식 채널</strong>: CRM 채널 활용, 팔로워 수 선확보 후 프로모션 트래픽 전환</li>
+          <li><strong>Smart Channel</strong>: 채팅창 최상단 노출 → 전환 상품으로 활용</li>
+        </ul>
+        <div class="divider" style="margin: clamp(0.5rem, 1vh, 0.8rem) 0;"></div>
+        <p class="section-label reveal d4">타겟 전략</p>
+        <div class="media-pills reveal d4">
+          <span class="media-pill highlight" style="color: var(--tw); border-color: var(--tw);">해외여행 예정자</span>
+          <span class="media-pill">K뷰티 관심사</span>
+          <span class="media-pill">일본 브랜드 구매이력</span>
+          <span class="media-pill">여행 키워드 시그널</span>
+        </div>
+      </div>
+      <div>
+        <p class="section-label reveal d5">고가치 신규 고객 확보</p>
+        <div class="card reveal d5" style="--accent: var(--tw);">
+          <div class="card-title" style="font-size: var(--body-size);">랜딩 페이지 전략</div>
+          <div class="card-body">'첫구매' 아닌 성분·솔루션 큐레이션 페이지 → 비교·탐색 후 고관여 전환</div>
+        </div>
+        <div class="card reveal d6" style="margin-top: 8px; --accent: var(--tw);">
+          <div class="card-title" style="font-size: var(--body-size);">영상 소재 적극 활용</div>
+          <div class="card-body">TikTok 트래픽 신규 운영 · 성분 비교 영상 · 여름 루틴 영상</div>
+        </div>
+        <div class="card reveal d7" style="margin-top: 8px; --accent: var(--tw);">
+          <div class="card-title" style="font-size: var(--body-size);">고가치 Seed 타겟</div>
+          <div class="card-body">메타: 다회 구매 유저 LAL · 구글: 성분 딥 검색 시그널 활용</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 15: HK — 현황 -->
+<section class="slide hk-slide grid-bg" id="s15" data-index="14" data-country="hk">
+  <div class="slide-content">
+    <div class="slide-header">
+      <div class="country-tag reveal d1" style="color: var(--hk); border-color: var(--hk);">🇭🇰 Hong Kong — 현황 진단</div>
+      <div class="accent-line reveal d2"></div>
+      <h2 class="slide-h2 reveal d3">성숙 시장 · 뷰티 매니아층 · 프리미엄 수요 부상</h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <p class="section-label reveal d4">시장 특성</p>
+        <ul class="bullet-list reveal d4" style="--accent: var(--hk);">
+          <li>뷰티 시장 <strong>저성장</strong> — 이미 성숙한 시장</li>
+          <li>프로모션 기간만 폭발적 매출 → 비프로모션 기간 리텐션 낮음</li>
+          <li><strong>뷰티 디바이스 카테고리</strong> 매출 상위권 (타 국가에는 없음)</li>
+          <li>1인당 지출 약 <strong>$313</strong> — 아시아 최고 수준</li>
+        </ul>
+      </div>
+      <div>
+        <p class="section-label reveal d5">소비자 행태</p>
+        <div class="card reveal d5" style="--accent: var(--hk); background: var(--hk-dim); border-color: rgba(155,107,232,0.3);">
+          <div class="card-body">
+            프리미엄 세그먼트 2년 연속 두 자릿수 성장<br><br>
+            <strong style="color: var(--text);">덜 사지만 더 좋은 것</strong> 선택 — 성분·퍼포먼스 기반 구매<br><br>
+            기능·효능으로 설득되는, 트렌디하고 색다른 제품 선호
+          </div>
+        </div>
+        <div class="card reveal d6" style="margin-top: 10px; --accent: var(--hk);">
+          <div class="card-body">
+            SaSa 등 로컬 로드샵 입지 축소<br>→ 이커머스 플랫폼으로 소비자 이동<br><br>
+            <strong style="color: var(--text);">특별하고 확실한 제품</strong>이 있어야 선택받음
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 16: HK — 프리미엄 전략 & 4대 메시지 -->
+<section class="slide hk-slide" id="s16" data-index="15" data-country="hk">
+  <div class="slide-content">
+    <div class="slide-header">
+      <div class="country-tag reveal d1" style="color: var(--hk); border-color: var(--hk);">🇭🇰 Hong Kong — 콘텐츠 전략</div>
+      <div class="accent-line reveal d2"></div>
+      <h2 class="slide-h2 reveal d3">프리미엄 K뷰티 큐레이터 — 4대 설득 메시지</h2>
+    </div>
+    <div class="reveal d3" style="margin-bottom: 10px;">
+      <p class="body-text"><strong style="color: var(--text);">포지셔닝:</strong> "할인 없이도 웃돈 주고 사고 싶은 K뷰티" — 가장 새롭고 검증된 트렌드를 즉각적으로 살 수 있는 플랫폼</p>
+    </div>
+    <div class="card-grid reveal d4" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="card" style="--accent: var(--hk);">
+        <div class="card-icon">🧪</div>
+        <div class="card-title">성분 강조</div>
+        <div class="card-body">문제 먼저 언급 + 성분 구체적 언급<br><br><em>"2% 나이아신아마이드 + 히알루론산"</em></div>
+      </div>
+      <div class="card" style="--accent: var(--hk);">
+        <div class="card-icon">📈</div>
+        <div class="card-title">트렌드 강조</div>
+        <div class="card-body">한국 실판매 데이터 기반<br><br><em>"1,200만 개 팔린 제품"</em></div>
+      </div>
+      <div class="card" style="--accent: var(--hk); background: var(--hk-dim); border-color: rgba(155,107,232,0.3);">
+        <div class="card-icon">⏰</div>
+        <div class="card-title">희소성 강조</div>
+        <div class="card-body">타이밍 기반 긴박감<br><br><em>"한국 출시 3일 만에 홍콩 바로 받기"</em><br><em>"재입고 잔여 00개"</em></div>
+      </div>
+      <div class="card" style="--accent: var(--hk);">
+        <div class="card-icon">🌡️</div>
+        <div class="card-title">맞춤 루틴 강조</div>
+        <div class="card-body">홍콩 기후 특화 루틴<br><br><em>"홍콩 7월 고온다습 피부를 위한 3단계 루틴"</em></div>
+      </div>
+    </div>
+    <div class="reveal d5" style="margin-top: clamp(0.6rem, 1.5vh, 1rem);">
+      <p class="body-text">📺 <strong style="color: var(--text);">콘텐츠 포맷:</strong> 정기 트렌드 콘텐츠 발행 (TOP5 제품·성분 정보) + Google VVC 영상 소재 + 샤오홍슈 활용 검토</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 17: HK — 매체 & 앱설치 -->
+<section class="slide hk-slide grid-bg" id="s17" data-index="16" data-country="hk">
+  <div class="slide-content">
+    <div class="slide-header">
+      <div class="country-tag reveal d1" style="color: var(--hk); border-color: var(--hk);">🇭🇰 Hong Kong — 매체 &amp; 앱설치 전략</div>
+      <div class="accent-line reveal d2"></div>
+      <h2 class="slide-h2 reveal d3">고관여 MAU 확보 → 프로모션 기간 대규모 전환</h2>
+    </div>
+    <div class="two-col">
+      <div>
+        <p class="section-label reveal d3">매체 플레이</p>
+        <ul class="bullet-list reveal d3" style="--accent: var(--hk);">
+          <li><strong>트래픽:</strong> 기존 구매 유저 추천타겟 + 뷰티 관심사 → 고관여 MAU 확보</li>
+          <li><strong>Google VVC (신규):</strong> 4대 메시지 영상으로 고관여자 유입</li>
+          <li><strong>전환:</strong> 방문 이탈 유저 + 영상 30%+ 시청 유저 리타겟팅</li>
+          <li><strong>크로스셀링:</strong> 특정 성분 구매이력 기반 신제품 노출 / 디바이스 구매 유저 → 병용 제품 지속 노출</li>
+        </ul>
+      </div>
+      <div>
+        <p class="section-label reveal d4">앱설치 확보 전략</p>
+        <div class="card reveal d4" style="--accent: var(--hk);">
+          <div class="card-title" style="font-size: var(--body-size);">🍎 iOS 우선</div>
+          <div class="card-body">ASA + Meta ACi<br>CPI 높으나 Install-to-Purchase 우수<br>→ iOS 앱 설치 유저 실구매 전환율 높음</div>
+        </div>
+        <div class="card reveal d5" style="margin-top: 8px; --accent: var(--hk);">
+          <div class="card-title" style="font-size: var(--body-size);">🤖 AOS 볼륨 확보</div>
+          <div class="card-body">Google ACi<br>타 권역 대비 홍콩·대만 CPI 우수<br>→ 볼륨 확보에 집중</div>
+        </div>
+        <div class="card reveal d6" style="margin-top: 8px; --accent: var(--hk); background: var(--hk-dim); border-color: rgba(155,107,232,0.3);">
+          <div class="card-body"><strong style="color: var(--text);">운영 사이클:</strong> 프로모션 기간 집약적 Install 증가 → 비프로모션 기간 리인게이지먼트 집중</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 18: SUMMARY -->
+<section class="slide grid-bg" id="s18" data-index="17" data-country="summary">
+  <div class="slide-content">
+    <div class="slide-header">
+      <p class="section-label reveal d1">Summary</p>
+      <div class="accent-line reveal d2" style="--accent: var(--gold);"></div>
+      <h2 class="slide-h2 reveal d2">국가별 핵심 액션 — 2026 H2</h2>
+    </div>
+    <div class="card-grid reveal d3" style="grid-template-columns: repeat(3, 1fr); max-height: min(65vh, 500px);">
+      <div class="card" style="--accent: var(--jp);">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+          <span style="font-size: 1.2rem;">🇯🇵</span>
+          <span class="slide-h3">일본</span>
+        </div>
+        <ul class="bullet-list" style="--accent: var(--jp);">
+          <li>HELP→HUB→HERO 퍼널 운영</li>
+          <li>랭킹·리뷰·어워즈 랜딩 설계</li>
+          <li>DOOH로 오프라인→온라인 브릿지</li>
+        </ul>
+      </div>
+      <div class="card" style="--accent: var(--uk);">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+          <span style="font-size: 1.2rem;">🇬🇧</span>
+          <span class="slide-h3">영국</span>
+        </div>
+        <ul class="bullet-list" style="--accent: var(--uk);">
+          <li>"Properly APP-PY!" AAA 상시</li>
+          <li>PMAX 5그룹 구조화</li>
+          <li>럭키드로우 + 스탬프 미션</li>
+        </ul>
+      </div>
+      <div class="card" style="--accent: var(--au);">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+          <span style="font-size: 1.2rem;">🇦🇺🇨🇦</span>
+          <span class="slide-h3">호주/캐나다</span>
+        </div>
+        <ul class="bullet-list" style="--accent: var(--au);">
+          <li>Google·TikTok 검색 캠페인</li>
+          <li>Reddit 커뮤니티 타겟팅</li>
+          <li>국가별 시즈널 큐레이션</li>
+        </ul>
+      </div>
+      <div class="card" style="--accent: var(--tw);">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+          <span style="font-size: 1.2rem;">🇹🇼</span>
+          <span class="slide-h3">대만</span>
+        </div>
+        <ul class="bullet-list" style="--accent: var(--tw);">
+          <li>K-Summer Rescue 7–8월 프로모</li>
+          <li>Line 신규 매체 진입</li>
+          <li>고가치 신규 고객 선점</li>
+        </ul>
+      </div>
+      <div class="card" style="--accent: var(--hk);">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+          <span style="font-size: 1.2rem;">🇭🇰</span>
+          <span class="slide-h3">홍콩</span>
+        </div>
+        <ul class="bullet-list" style="--accent: var(--hk);">
+          <li>4대 메시지 정기 콘텐츠</li>
+          <li>Google VVC 신규 진입</li>
+          <li>iOS ACi 앱설치 우선</li>
+        </ul>
+      </div>
+      <div class="card" style="background: var(--gold-dim); border-color: rgba(200,168,75,0.3); --accent: var(--gold);">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+          <span style="font-size: 1.2rem;">💎</span>
+          <span class="slide-h3" style="color: var(--gold);">공통 KPI</span>
+        </div>
+        <ul class="bullet-list" style="--accent: var(--gold);">
+          <li>신규 고객 비중 확대</li>
+          <li>앱 중심 고관여 유저 육성</li>
+          <li>상시기간 매출 안정화</li>
+        </ul>
+      </div>
+    </div>
+    <div class="reveal d4" style="text-align: center; margin-top: clamp(0.8rem, 2vh, 1.5rem);">
+      <p class="small-text" style="font-family: 'Noto Sans KR', sans-serif; letter-spacing: 0.15em;">올리브영 글로벌 · 글로벌4팀 (마케팅8팀) · 2026 H2 전략 제안</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+/* === PASSWORD GATE === */
+(function() {
+  const PASS = 'OY2026H2';
+  const SESSION_KEY = 'oy_auth';
+  const gate = document.getElementById('pw-gate');
+  const input = document.getElementById('pw-input');
+  const btn = document.getElementById('pw-btn');
+  const errMsg = document.getElementById('pw-error');
+
+  function unlock() {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    gate.classList.add('fade-out');
+    setTimeout(() => gate.remove(), 650);
+  }
+
+  function attempt() {
+    if (input.value === PASS) {
+      unlock();
+    } else {
+      input.classList.remove('error');
+      void input.offsetWidth; // reflow to re-trigger animation
+      input.classList.add('error');
+      errMsg.classList.add('show');
+      input.value = '';
+      input.focus();
+    }
+  }
+
+  if (sessionStorage.getItem(SESSION_KEY) === '1') {
+    gate.remove();
+  } else {
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') attempt(); });
+    btn.addEventListener('click', attempt);
+    input.focus();
+  }
+})();
+
+/* === NAVIGATION SETUP === */
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+let currentIndex = 0;
+
+// Create dot nav
+const navDots = document.getElementById('navDots');
+slides.forEach((_, i) => {
+  const dot = document.createElement('button');
+  dot.className = 'dot';
+  dot.setAttribute('aria-label', `슬라이드 ${i + 1}`);
+  dot.onclick = () => goToSlide(i);
+  navDots.appendChild(dot);
+});
+
+function goToSlide(index) {
+  const target = slides[index];
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function updateUI(index) {
+  currentIndex = index;
+
+  // Update dots
+  document.querySelectorAll('.dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+  });
+
+  // Update counter
+  const counter = document.getElementById('slideCounter');
+  counter.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(totalSlides).padStart(2, '0');
+
+  // Update progress bar
+  const progress = ((index + 1) / totalSlides) * 100;
+  document.getElementById('progressBar').style.width = progress + '%';
+
+  // Update sidebar
+  const country = slides[index].dataset.country;
+  document.querySelectorAll('.sidebar-btn').forEach(btn => {
+    const btnCountry = btn.dataset.country;
+    const isActive = country === btnCountry ||
+      (country === 'jp' && [2,3,4].includes(index)) ||
+      (country === 'uk' && [5,6,7].includes(index)) ||
+      (country === 'au' && [8,9,10].includes(index)) ||
+      (country === 'tw' && [11,12,13].includes(index)) ||
+      (country === 'hk' && [14,15,16].includes(index));
+    btn.classList.toggle('active', isActive);
+  });
+
+  // Sync sidebar highlight with exact country
+  document.querySelectorAll('.sidebar-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  const countryMap = {
+    2: 'jp', 3: 'jp', 4: 'jp',
+    5: 'uk', 6: 'uk', 7: 'uk',
+    8: 'au', 9: 'au', 10: 'au',
+    11: 'tw', 12: 'tw', 13: 'tw',
+    14: 'hk', 15: 'hk', 16: 'hk'
+  };
+  const activeCountry = countryMap[index];
+  if (activeCountry) {
+    const btn = document.querySelector(`.sidebar-btn[data-country="${activeCountry}"]`);
+    if (btn) btn.classList.add('active');
+  }
+}
+
+/* === INTERSECTION OBSERVER === */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      const index = parseInt(entry.target.dataset.index);
+      updateUI(index);
+    } else {
+      entry.target.classList.remove('visible');
+    }
+  });
+}, { threshold: 0.5 });
+
+slides.forEach(slide => observer.observe(slide));
+
+/* === KEYBOARD NAVIGATION === */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+    e.preventDefault();
+    goToSlide(Math.min(currentIndex + 1, totalSlides - 1));
+  } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+    e.preventDefault();
+    goToSlide(Math.max(currentIndex - 1, 0));
+  } else if (e.key === 'Home') {
+    e.preventDefault();
+    goToSlide(0);
+  } else if (e.key === 'End') {
+    e.preventDefault();
+    goToSlide(totalSlides - 1);
+  }
+});
+
+/* === INIT === */
+updateUI(0);
+slides[0].classList.add('visible');
+</script>
+</body>
+</html>
